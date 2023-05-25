@@ -57,8 +57,8 @@ area = 1.675 * 0.992 * 4.0
 # Wirkungsgrad: Modul  * Wechselrichter * senkrechte Aufstellung
 efficiency = 0.1926 * 0.956 * 0.7
 
-#debug = True
-debug = False
+debug = True
+#debug = False
 
 # Globalstrahlung * 0,278 (Umrechnung in Watt/m2) * Modulfläche * Wirkungsgrad
 def rad1hToWatt(rad1h):
@@ -223,6 +223,8 @@ def analyse(tree):
         neff = ele_Neff[index]
         if (debug): print("index: ", index, ", dateStr: ", item, ", timestamp: ", dtLocal, ", Rad1h: ", rad1h, " FF: ", ff, " Neff: ", neff)
         updateInflux(region, dtLocal, toJson(item, dtLocal, rad1h, ff, neff))
+#        print("index: ", index, ", dateStr: ", item, ", timestamp: ", dtLocal, ", Rad1h: ", rad1h)
+#        updateInflux(region, dtLocal, toJson(item, dtLocal, rad1h))
 
 def go():
     url = 'https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/' + region + '/kml/MOSMIX_L_LATEST_' + region + '.kmz'
